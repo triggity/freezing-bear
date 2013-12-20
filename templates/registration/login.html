@@ -1,6 +1,8 @@
 {% extends "registration/registration_base.html" %}
 {% load i18n %}
+{% load staticfiles %}
 {% block title %}{% trans "Login" %}{% endblock %}
+<link href="{% static "registration/base.css" %}" rel="stylesheet">
 {% block content %}
 {% url 'auth_password_reset' as auth_pwd_reset_url %}
 {% url 'registration_register' as register_url%}
@@ -9,7 +11,6 @@
 <p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
 {% endif %}
 
-    <link href="signin.css" rel="stylesheet">
 {% comment %}
 <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
 <table>
