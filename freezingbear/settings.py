@@ -53,7 +53,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-    REGISTRATION_TEMPLATE_DIR,      # Django-registration-defaults templates
+    #REGISTRATION_TEMPLATE_DIR,      # Django-registration-defaults templates
     BASE_DIR + '/templates/'        # General/user templates
 )
 ROOT_URLCONF = 'freezingbear.urls'

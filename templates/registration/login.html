@@ -1,0 +1,42 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+{% block content %}
+{% url 'auth_password_reset' as auth_pwd_reset_url %}
+{% url 'registration_register' as register_url%}
+
+{% if form.errors %}
+<p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
+{% endif %}
+
+    <link href="signin.css" rel="stylesheet">
+{% comment %}
+<form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
+<table>
+<tr>
+    <td>{% trans form.username.label_tag %}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{% trans form.password.label_tag %}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+<p>{% blocktrans %}<a href="{{ auth_pwd_reset_url }}">Forgot</a> your password?
+    <a href="{{ register_url }}">Need account</a>?{% endblocktrans %}</p>
+
+<input type="submit" value="{% trans "login" %}" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endcomment %}
+
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+{% endblock %}
