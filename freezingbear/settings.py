@@ -89,3 +89,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Django-bootstrap3 settings, for offline
+# BOOTSRAP3 = {
+#   'base_url': 'http://localhost/bootstrap3/',
+# }
