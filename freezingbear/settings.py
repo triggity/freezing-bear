@@ -91,6 +91,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Django-bootstrap3 settings, for offline
-# BOOTSRAP3 = {
-#   'base_url': 'http://localhost/bootstrap3/',
-# }
+BOOTSTRAP3 = {
+  'base_url': 'http://localhost/bootstrap3/',
+}
