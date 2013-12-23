@@ -33,18 +33,18 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
-          <ul class="nav navbar-nav navbar-right login-status">
-            {% block header %}
+              <ul class="nav navbar-nav navbar-right login-status">
+                {% block header %}
 
-	    {% if user.is_authenticated %}
-	    {% trans "Logged in" %}: {{ user.username }} 
-	    (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
-	    <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-	    {% else %}
-	    <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
-	    {% endif %}
-            {% endblock %}
-          </ul>
+	          {% if user.is_authenticated %}
+	            {% trans "Logged in" %}: {{ user.username }} 
+	            (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+	            <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+	          {% else %}
+	            <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+	          {% endif %}
+                {% endblock %}
+              </ul>
             </div><!--/.nav-collapse -->
           </div>
         </div><!--/.navbar -->
