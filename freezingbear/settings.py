@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
+# Template directory root
 TEMPLATE_DIRS = (
     #REGISTRATION_TEMPLATE_DIR,      # Django-registration-defaults templates
     BASE_DIR + '/templates/'        # General/user templates
@@ -87,12 +87,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATIC_URL = os.path.join(BASE_DIR, 'static/')
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
 #Django-bootstrap3 settings, for offline
 BOOTSTRAP3 = {
   'base_url': 'http://localhost/bootstrap3/',
