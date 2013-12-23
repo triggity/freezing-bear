@@ -4,13 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <!-- <link rel="stylesheet" href="/style.css" /> -->
     <title>{% block title %}User test{% endblock %}</title>
     {% load bootstrap3 %}
+    {% load staticfiles %}
 
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery=True %}
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 
 <body>
@@ -32,7 +33,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right login-status">
             {% block header %}
 
 	    {% if user.is_authenticated %}
