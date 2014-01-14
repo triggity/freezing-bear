@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^schedule/', include('schedule.urls')),
 
     #TODO: These are temporary, put these one off views into a project
     (r'^accounts/profile', TemplateView.as_view(template_name='profile/profile.html')),
