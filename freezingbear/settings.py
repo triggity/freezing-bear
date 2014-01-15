@@ -55,7 +55,7 @@ MIDDLEWARE_CLASSES = (
 # Template directory root
 TEMPLATE_DIRS = (
     #REGISTRATION_TEMPLATE_DIR,      # Django-registration-defaults templates
-    os.path.join(BASE_DIR, '/templates/') # General/user templates
+    os.path.join(BASE_DIR, 'templates') # General/user templates
 )
 ROOT_URLCONF = 'freezingbear.urls'
 
