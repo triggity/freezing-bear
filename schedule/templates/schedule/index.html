@@ -1,6 +1,11 @@
-<html>
-  <body>
+{% extends "base.html" %}
+{% load i18n %}
 
-    <h1>Where they at</h1>
-  </body>
-</html>
+{% block title %}
+Scheduling
+{% endblock %}
+
+{% block content %}
+<h1> Schedule</h1>
+{% include 'schedule/table.html' %}
+{% endblock %}
