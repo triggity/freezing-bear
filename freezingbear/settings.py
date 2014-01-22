@@ -55,7 +55,8 @@ MIDDLEWARE_CLASSES = (
 # Template directory root
 TEMPLATE_DIRS = (
     #REGISTRATION_TEMPLATE_DIR,      # Django-registration-defaults templates
-    os.path.join(BASE_DIR, 'templates') # General/user templates
+    #os.path.join(BASE_DIR, 'templates') # General/user templates
+    BASE_DIR + '/templates/' # General/user templates
 )
 ROOT_URLCONF = 'freezingbear.urls'
 
@@ -94,6 +95,6 @@ STATICFILES_DIRS = (
 )
 
 #Django-bootstrap3 settings, for offline
-BOOTSTRAP3 = {
-  'base_url': 'http://localhost/bootstrap3/',
-}
+# BOOTSTRAP3 = {
+#   'base_url': 'http://localhost/bootstrap3/',
+# }
