@@ -33,14 +33,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    #jdango packages
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #third party
     'registration',
     'bootstrap3',
+    'compressor',
+    
+    #user
     'schedule',
 )
 
@@ -89,12 +95,23 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_URL = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = '/static/'#os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    'static_precompiler.finders.StaticPrecompilerFinder',
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
 )
 
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+)
+INTERNAL_IPS = ('127.0.0.1',)
 #Django-bootstrap3 settings, for offline
-# BOOTSTRAP3 = {
-#   'base_url': 'http://localhost/bootstrap3/',
-# }
+BOOTSTRAP3 = {
+  'base_url': 'http://localhost/bootstrap3/',
+}

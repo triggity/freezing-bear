@@ -7,11 +7,14 @@
     <title>{% block title %}User test{% endblock %}</title>
     {% load bootstrap3 %}
     {% load staticfiles %}
+    {% load compress %}
+    {% compress css %}
+      <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}css/base.less" />
+    {% endcompress %}
 
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery=True %}
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +37,7 @@
                 <li><a href="/accounts/profile">Profile</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right login-status">
+                <div class='dfgadsfa'></div>
                 {% block header %}
 
 	          {% if user.is_authenticated %}
