@@ -2,8 +2,11 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block title %}{% trans "Login" %}{% endblock %}
-<link href="{% static "registration/base.css" %}" rel="stylesheet">
 {% block content %}
+{% load compress %}
+{% compress css %}
+  <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}less/registration/base.less" />
+{% endcompress %}
 {% url 'auth_password_reset' as auth_pwd_reset_url %}
 {% url 'registration_register' as register_url%}
 

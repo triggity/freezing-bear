@@ -106,6 +106,9 @@ STATICFILES_FINDERS = (
     # other finders..
     'compressor.finders.CompressorFinder',
 )
+# for debug
+COMPRESS_ENABLED = False
+COMPRESS_OUTPUT_DIR= "/build"
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),

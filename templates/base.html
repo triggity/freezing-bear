@@ -8,13 +8,13 @@
     {% load bootstrap3 %}
     {% load staticfiles %}
     {% load compress %}
-    {% compress css %}
-      <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}css/base.less" />
-    {% endcompress %}
 
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery=True %}
+    {% compress css %}
+      <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}less/base.less" />
+    {% endcompress %}
 </head>
 
 <body>
