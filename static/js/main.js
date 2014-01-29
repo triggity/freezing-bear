@@ -1,23 +1,19 @@
 
 require.config({
-//  paths: {
-//    'underscore': 'vendor/underscore/underscore',
-//    'backbone': 'vendor/backbone/backbone',
-//    'jquery': 'vendor/jquery/jquery-2.0.3.min',
+  paths: {
+    'underscore': 'vendor/underscore',
+    'jquery': 'vendor/jquery-2.0.3.min',
 //  
-//  },
-//  shim: {
-//    "underscore": {
-//      "exports": "_"
-//    },
-//    "backbone": {
-//      "deps": ["underscore", "jquery"],
-//      "exports": "Backbone"
-//    }
-//  }
+  },
+  shim: {
+    "underscore": {
+      "exports": "_"
+    },
+  }
 });
 require([
-  ], function() {
-  
+  "underscore"
+  ], function(_) {
+  console.log(_); 
   console.log('run require'); 
   });
