@@ -12,6 +12,7 @@
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery=True %}
+    <script data-main="{% static 'js/main.js' )%}" src="{% static 'js/vendor//require.js' %}"></script>
     {% compress css %}
       <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}less/base.less" />
     {% endcompress %}
