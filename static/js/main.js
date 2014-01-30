@@ -15,6 +15,5 @@ require([
   "underscore",
   "jquery"
   ], function(_, $) {
-  console.log(_); 
   console.log('run require'); 
   });

@@ -16,3 +16,6 @@ class Choices(models.Model):
     block_start = models.IntegerField(default=0)
     block_length = models.IntegerField(default=1)
     #user = models.ForeignKey(User)
+
+class Person(models.Model):
+    name = models.CharField(verbose_name="full name", max_length=99) 

@@ -2,30 +2,27 @@
 <table class='table scheduler'>
 
   <script>
-    console.log($('body'))
     $(function(){
-        console.log('asdfasdfa')
+      console.log('starting....')
+      console.log({{special}});
+      var createTable = function() {
+        var blocks = [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15],
+            days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        for (var i in blocks) {
+            var thisone = $('<tr></tr>');
+          for (var j in days) {
+            thisone.append('<td> <button type="button" class="btn btn-default">' + days[j] + ' ' + blocks[i] + '</button> </td> ');
+          }
+         $('.scheduler').append(thisone);
+        }
+      
+      } 
+      createTable();
       $('.btn-default, .btn-success').click(function(event){
-        console.log('catch');
         $(this).toggleClass('btn-default');
         $(this).toggleClass('btn-success');
       
       });
-        var createTable = function() {
-          console.log('asffs');
-          var blocks = [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15],
-              days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-          for (var i in blocks) {
-            console.log($('.scheduler'));
-              var thisone = $('<tr></tr>');
-            for (var j in days) {
-              thisone.append('<td> <button type="button" class="btn btn-default">' + days[j] + ' ' + blocks[i] + '</button> </td> ');
-            }
-           $('.scheduler').append(thisone);
-          }
-        
-        } 
-        createTable();
     
     });
   </script>
