@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'compressor',
-    'django_tables2',
     
     #user
     'schedule',
