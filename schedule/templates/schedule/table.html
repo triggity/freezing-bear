@@ -12,7 +12,11 @@
   {% endfor %}
 
 </table>
+    {% load staticfiles %}
   <script>
+    {% load staticfiles %}
+    require(['{% static 'js/schedule.js' )%}'])
+    /*
     $(function(){
       //console.log($('button').data('day'));
       var bst = $('.scheduletable .btn')//.data('day');
@@ -61,4 +65,5 @@
     }
     createTable([["row 1, cell 1", "row 1, cell 2"], ["row 2, cell 1", "row 2, cell 2"]]);
     fillTable() 
+    */
   </script>
