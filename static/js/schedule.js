@@ -3,7 +3,15 @@ require([
   "jquery",
   "lib/table"
   ], function(_, $, Table) {
-  console.log('run schedule'); 
-  console.log(Table)
-  console.log(_)
-  });
+    var table = new Table();
+    console.log(table);
+    table.findTable();
+    $(function(){
+      $('.btn-default, .btn-success').click(function(event){
+        console.log('catch');
+        $(this).toggleClass('btn-default');
+        $(this).toggleClass('btn-success');
+      });
+    });
+    table.fillTableData();
+});

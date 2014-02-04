@@ -12,9 +12,17 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^schedule/', include('schedule.urls')),
+    url(r'^schedule/$', include('schedule.urls')),
 
     #TODO: These are temporary, put these one off views into a project
     (r'^accounts/profile', TemplateView.as_view(template_name='profile/profile.html')),
     (r'^$', TemplateView.as_view(template_name='index.html')),
 )
+
+def show_urls(urllist, depth=0):
+    for entry in urllist:
+        print "  " * depth, entry.regex.pattern
+        if hasattr(entry, 'url_patterns'):
+            show_urls(entry.url_patterns, depth + 1)
+
+show_urls(urlpatterns)

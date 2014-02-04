@@ -1,5 +1,4 @@
 <h2> Table here</h2>
-
 <table class='table scheduletable'>
   {% for i in blocks%}
     <tr>
@@ -12,58 +11,7 @@
   {% endfor %}
 
 </table>
-    {% load staticfiles %}
-  <script>
-    {% load staticfiles %}
-    require(['{% static 'js/schedule.js' )%}'])
-    /*
-    $(function(){
-      //console.log($('button').data('day'));
-      var bst = $('.scheduletable .btn')//.data('day');
-      //console.log(bst.children().data('day'));
-      $.map(bst, function(i) {
-        //console.log($(i).data('day'))
-      });
-      $('.btn-default, .btn-success').click(function(event){
-        console.log('catch');
-        $(this).toggleClass('btn-default');
-        $(this).toggleClass('btn-success');
-      
-      });
-    
-    });
-    function fillTable(choices) {
-      var bst = $('.scheduletable .btn')//.data('day');
-      //super shitty get from this day
-      var eee = $.filter(bst, function(i) {
-        console.log($(i).data('day'))
-        return $(i).data('day') === 'Monday'
-      });
-      p
-      console.log(eee);
-    }
-    var info = "{{ table_data }}"
-    console.log(decodeURIComponent(info));
-    function createTable(tableData) {
-      var table = document.createElement('table')
-      , tableBody = document.createElement('tbody');
-
-      var table = $('<table></table>').addClass('table yes');
-      tableData.forEach(function(rowData) {
-        var row = $('<tr></tr>');
-
-        rowData.forEach(function(cellData) {
-          var cell = $('<td></td>');
-          cell.text(cellData);
-          row.append(cell);
-        });
-
-        table.append(row);
-      });
-
-      $("#content").append(table);
-    }
-    createTable([["row 1, cell 1", "row 1, cell 2"], ["row 2, cell 1", "row 2, cell 2"]]);
-    fillTable() 
-    */
-  </script>
+<script>
+  {% load staticfiles %}
+  require(['{% static 'js/schedule.js' )%}'])
+</script>
