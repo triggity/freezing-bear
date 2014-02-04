@@ -16,4 +16,4 @@ require([
   "jquery"
   ], function(_, $) {
   console.log('run require'); 
-  });
+});
