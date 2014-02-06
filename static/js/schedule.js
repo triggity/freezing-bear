@@ -15,7 +15,7 @@ require([
     });
     table.fillTableData();
     $('#yes123').click(function() {
-      table.getTableData();
+      table.postTableData();
     
     })
 });

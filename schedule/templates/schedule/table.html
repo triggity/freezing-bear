@@ -12,6 +12,7 @@
 
 </table>
 <script>
+  var csrf_token = "{{ csrf_token }}";
   {% load staticfiles %}
   require(['{% static 'js/schedule.js' )%}'])
 </script>

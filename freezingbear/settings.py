@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'compressor',
-    'restless',
     
     #user
     'schedule',
