@@ -5,7 +5,6 @@ import itertools
 from operator import itemgetter
 from schedule.models import Choices
 from django.views.decorators.http import require_http_methods
-from restless.views import Endpoint
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 
