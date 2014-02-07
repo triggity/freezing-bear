@@ -40,17 +40,50 @@ def sched(req):
 def updatesched(req):
     if req.method == 'POST':
         data = json.loads(req.POST.get('tabledata'))
-        days = itertools.groupby(sorted(data), lambda x: x[0] )
-        weds = []
-        for k,g in days:
-            if k == 'Wednesday':
-                pp.pprint(type(g))
-                weds.append(list(g))
-        print 'd'
-        mapeed = map(lambda x: x[1], [item for sublist in weds for item in sublist])
-        for k, g in itertools.groupby(enumerate(mapeed), lambda (i,x):i-x):
-            print map(itemgetter(1), g)
-        #for k, g in days:
-        #    pp.pprint(k)
-        #    pp.pprint(list(g))
-        return  HttpResponse(json.dumps(weds))
+        consecs = create_groupings(data)
+        model_dicts = to_model_dicts(consecs)
+        print dir(Choices.objects.all())
+        Choices.objects.all().delete()
+        map(dict_to_model, model_dicts)
+        
+        return  HttpResponse(json.dumps(consecs))
+def dict_to_model(item):
+    choice = Choices(**item)
+    choice.save()
+#returns a list of dictionarys representing model attributes
+def to_model_dicts(data):
+    models = [{'day': k, 'block_start': i[0], 'block_length': len(i) }  for (k, v) in data.iteritems() for i in v ]
+    return models
+
+def create_groupings(data):
+    #takes response and parses it out into a series of lists by day
+    days = itertools.groupby(sorted(data), lambda x: x[0] )
+    by_day = {}
+    for k,g in days:
+        if k not in by_day:
+            by_day[k] = []
+        by_day[k].append(list(g))
+    
+    # takes input and flattens it
+    by_day_flat = {day: flatten_list(values) for (day, values) in by_day.iteritems()}
+    
+    # plucking out the 'block' key into a list
+    plucked_blocks = { day: map(lambda x: x[1], values) for (day, values) in by_day_flat.iteritems()}
+    
+    print 'consecs'
+    # groups into consecutive integers
+    consecs = { k: find_consecutive(v) for k, v in plucked_blocks.iteritems()}
+    return consecs
+
+# given a list of data, finds consecutive integers and returns a list of lists
+def find_consecutive(data_list):
+    grouped = itertools.groupby(enumerate(data_list), lambda (i,x):i-x)
+    output = [map(itemgetter(1), g) for k, g in grouped]
+    return output
+
+def flatten_list(fat_list):
+    return [item for sublist in fat_list for item in sublist]
+
+#takes itertools grpoupby object and 
+def by_day(data):
+    pass
