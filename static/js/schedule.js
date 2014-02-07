@@ -8,14 +8,14 @@ require([
     table.findTable();
     $(function(){
       $('.btn-default, .btn-success').click(function(event){
-        console.log('catch');
-        $(this).toggleClass('btn-default');
         $(this).toggleClass('btn-success');
       });
     });
     table.fillTableData();
     $('#yes123').click(function() {
       table.postTableData();
-    
+    })
+    $('#clearTable').click(function() {
+      table.clearTable();
     })
 });

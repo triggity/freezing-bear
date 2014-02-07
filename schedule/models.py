@@ -15,5 +15,7 @@ class Choices(models.Model):
     day = models.CharField(max_length=9, choices=day_choices)
     block_start = models.IntegerField(default=0)
     block_length = models.IntegerField(default=1)
-    #user = models.ForeignKey(User)
+    user = models.ForeignKey(User)
+    def __str__(self):
+        return '{} {} {} {}'.format(self.user, self.day, self.block_start, self.block_length)
 

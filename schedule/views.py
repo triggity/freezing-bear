@@ -5,6 +5,9 @@ import itertools
 from operator import itemgetter
 from schedule.models import Choices
 from django.views.decorators.http import require_http_methods
+from restless.views import Endpoint
+from django.core import serializers
+from django.contrib.auth.decorators import login_required
 
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
@@ -15,18 +18,18 @@ days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satur
 blocks = range(24)
 props = [["{} {}".format(day, block) for day in days[2:4] for block in blocks[11:16]]]
 chain = list(itertools.chain(*props))
+@login_required
 def index(req):
     payload = {
         'days': days,
         'blocks': blocks
     }
+    print req.user
     return render(req, 'schedule/index.html', payload)
 
-from restless.views import Endpoint
-from django.core import serializers
 
 def sched(req):
-    objects = Choices.objects.all().iterator()
+    objects = Choices.objects.filter(user=req.user)
     dicted = [{'day': choice.day, 'block_length': choice.block_length, 'block_start': choice.block_start} for choice in objects]
     something = []
     for x in dicted:
@@ -42,14 +45,15 @@ def updatesched(req):
         data = json.loads(req.POST.get('tabledata'))
         consecs = create_groupings(data)
         model_dicts = to_model_dicts(consecs)
-        print dir(Choices.objects.all())
-        Choices.objects.all().delete()
-        map(dict_to_model, model_dicts)
-        
+        Choices.objects.filter().delete()
+        map(lambda x: dict_to_model(x, req), model_dicts)
         return  HttpResponse(json.dumps(consecs))
-def dict_to_model(item):
+
+def dict_to_model(item, req):
+    item.update({'user': req.user})
     choice = Choices(**item)
     choice.save()
+
 #returns a list of dictionarys representing model attributes
 def to_model_dicts(data):
     models = [{'day': k, 'block_start': i[0], 'block_length': len(i) }  for (k, v) in data.iteritems() for i in v ]
