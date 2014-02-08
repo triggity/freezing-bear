@@ -2,6 +2,23 @@
   margin-top: 15px;
   color: rgb(153, 153, 153);
 }
-.navbar {
-	background-color: magenta;
+.navbar, .navbar-fixed-bottom {
+	background-color: #E6E6E6;
+}
+.navbar-brand {
+	font-size: 24pt;
+}
+#content.container {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+/* login page */
+.form-signin {
+	width: 251px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.btn.btn-lg.btn-primary.btn-block {
+	margin-top: 20px;
 }
