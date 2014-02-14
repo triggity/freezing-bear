@@ -7,11 +7,17 @@
     <title>{% block title %}Da Cold Bear{% endblock %}</title>
     {% load bootstrap3 %}
     {% load staticfiles %}
+    {% load compress %}
 
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
-    {% bootstrap_javascript jquery=True %}
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <script data-main="{% static 'js/main.js' )%}" src="{% static 'js/vendor/require.js' %}">
+      {% bootstrap_javascript %}
+    </script>
+    {% compress css %}
+      <link rel="stylesheet" type="text/less" media="all" href="{{STATIC_URL}}less/base.less" />
+    {% endcompress %}
+    {% block headfiles %}{% endblock %}
 </head>
 
 <body>
